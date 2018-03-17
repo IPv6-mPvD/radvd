@@ -86,8 +86,7 @@
 #include <net/if_types.h>
 #endif
 
-#if defined(HAVE_NET_IF_ARP_H) && !defined(ARPHRD_ETHER)
-#include <net/if_arp.h>
+#if (defined(HAVE_NET_IF_ARP_H) && !defined(ARPHRD_ETHER)) || HAVE_LINUX_IF_ARP_H #include <net/if_arp.h>
 #endif /* defined(HAVE_NET_IF_ARP_H) && !defined(ARPHRD_ETHER) */
 
 #ifdef HAVE_SYS_SOCKIO_H
@@ -100,10 +99,6 @@
 
 #ifdef HAVE_IFADDRS_H
 #include <ifaddrs.h>
-#endif
-
-#ifdef HAVE_LINUX_IF_ARP_H
-#include <linux/if_arp.h>
 #endif
 
 #ifdef __MACH__
